@@ -1,3 +1,4 @@
+#경유 접속 짜면서 새로 했던 거라서 필요없을 것 같긴한데 그냥 같이 올렸습니다
 import paramiko
 import sshtunnel
 
@@ -29,12 +30,11 @@ import threading
 class SshTunnel(threading.Thread):
     def __init__(self, localport, remoteport, remoteuser, remotehost):
         threading.Thread.__init__(self)
-        self.localport = localport      # Local port to listen to
-        self.remoteport = remoteport    # Remote port on remotehost
-        self.remoteuser = remoteuser    # Remote user on remotehost
-        self.remotehost = remotehost    # What host do we send traffic to
-        self.daemon = True              # So that thread will exit when
-                                        # main non-daemon thread finishes
+        self.localport = localport 
+        self.remoteport = remoteport    
+        self.remoteuser = remoteuser    
+        self.remotehost = remotehost    
+        self.daemon = True              
 
     def run(self):
         if subprocess.call([
@@ -45,10 +45,10 @@ class SshTunnel(threading.Thread):
 
 
 if __name__ == '__main__':
-    tunnel = SshTunnel(2222, 80, 'karel', 'localhost')
+    tunnel = SshTunnel(1368, 22, '...', 'localhost')
     tunnel.start()
     time.sleep(1)
-    subprocess.call(['curl', 'http://localhost:2222'])
+    subprocess.call(['curl', 'http://...'])
 '''
 c.connect( hostname = ip, username = '', password = '', port = '' )
 
